@@ -29,11 +29,11 @@ public class MessageDAOImpl implements MessageDAO {
 		sendMessage(message, session);
 		session.close();
 	}
- /**
-  * Saves the message to the db only if the sender and receiver are users
-  * @param message
-  * @param session
-  */
+	/**
+	 * Saves the message to the db only if the sender and receiver are users
+	 * @param message
+	 * @param session
+	 */
 	public void sendMessage(Message message, Session session) {
 		String sender = message.getSender();
 		String receiver = message.getReceiver();
@@ -133,7 +133,7 @@ public class MessageDAOImpl implements MessageDAO {
 		deleteMessage(message, session);
 		session.close();
 	}
-	
+
 	/**
 	 * Deletes the particular message between sender and receiver
 	 * @param message
