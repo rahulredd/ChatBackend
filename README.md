@@ -13,3 +13,6 @@
 8. Set the values(Ex: username, password, messageSender, message receiver)  to enter in the db in `cfg.properties` file. 
 9. Run the `BackendClient.java` class. 
 10. `mvn install` will run all the test cases.
+
+## Execution Flow Chart
+![alt tag] (https://github.com/rahulredd/ChatBackend/blob/master/flowchart.png)
