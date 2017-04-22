@@ -15,4 +15,4 @@
 10. `mvn install` will run all the test cases.
 
 ## Execution Flow Chart
-![alt tag] (https://github.com/rahulredd/ChatBackend/blob/master/flowchart.png)
+  ![alt tag](https://github.com/rahulredd/ChatBackend/blob/master/flowchart.png)
