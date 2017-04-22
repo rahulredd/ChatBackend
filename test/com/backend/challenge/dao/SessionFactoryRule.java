@@ -9,7 +9,11 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
 import com.backend.challenge.pojo.Message;
 import com.backend.challenge.pojo.User;
-
+/**
+ * Helps to setup a test db in-memory
+ * @author Rahul
+ *
+ */
 public class SessionFactoryRule implements MethodRule {
 	private SessionFactory sessionFactory;
 	private Transaction transaction;

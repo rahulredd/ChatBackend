@@ -11,7 +11,11 @@ import org.slf4j.LoggerFactory;
 import com.backend.challenge.pojo.User;
 import com.backend.challenge.utils.DbUtils;
 import com.backend.challenge.utils.Utils;
-
+/**
+ * Implements CRD operations for User
+ * @author Rahul
+ *
+ */
 public class UserDAOImpl implements UserDAO {
 	public static final Logger LOG = LoggerFactory.getLogger(UserDAOImpl.class);
 	private static Session session;
@@ -21,10 +25,7 @@ public class UserDAOImpl implements UserDAO {
 		session.beginTransaction();
 	}
 
-	public UserDAOImpl() {
-
-	}
-
+	
 	@Override
 	public void addUser(String username, String password) {
 		beginSession();
@@ -32,6 +33,12 @@ public class UserDAOImpl implements UserDAO {
 		session.close();
 	}
 
+	/**
+	 * Creates a user object with encrypted password and saves it to the db
+	 * @param username
+	 * @param password
+	 * @param session
+	 */
 	public void addUser(String username, String password, Session session) {
 		if (username == null || password == null) {
 			throw new IllegalArgumentException("Please check the credentials");
@@ -56,6 +63,11 @@ public class UserDAOImpl implements UserDAO {
 		return results;
 	}
 
+	/**
+	 * 
+	 * @param session
+	 * @return list of users
+	 */
 	public List<String> getUsers(Session session) {
 		List<String> results = new ArrayList<String>();
 		String hql = "select username from User";
@@ -76,6 +88,11 @@ public class UserDAOImpl implements UserDAO {
 		session.close();
 	}
 
+	/**
+	 * Deletes user with a particular username
+	 * @param username
+	 * @param session
+	 */
 	public void deleteUser(String username, Session session) {
 		String hql = "delete from User where username='" + username + "'";
 		Query query = null;

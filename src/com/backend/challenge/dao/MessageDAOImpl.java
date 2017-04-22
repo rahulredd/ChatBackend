@@ -9,7 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.backend.challenge.pojo.Message;
 import com.backend.challenge.utils.DbUtils;
-
+/**
+ * Implements CRD operations for Message
+ * @author Rahul
+ *
+ */
 public class MessageDAOImpl implements MessageDAO {
 	public static final Logger LOG = LoggerFactory.getLogger(MessageDAO.class);
 	private static Session session;
@@ -25,7 +29,11 @@ public class MessageDAOImpl implements MessageDAO {
 		sendMessage(message, session);
 		session.close();
 	}
-
+ /**
+  * Saves the message to the db only if the sender and receiver are users
+  * @param message
+  * @param session
+  */
 	public void sendMessage(Message message, Session session) {
 		String sender = message.getSender();
 		String receiver = message.getReceiver();
@@ -41,6 +49,12 @@ public class MessageDAOImpl implements MessageDAO {
 		}
 	}
 
+	/**
+	 * Checks if the user is present or not
+	 * @param username
+	 * @param session
+	 * @return
+	 */
 	private boolean isUserExists(String username, Session session) {
 		String hql = "select id from User where username='" + username + "'";
 		Query query = null;
@@ -72,6 +86,20 @@ public class MessageDAOImpl implements MessageDAO {
 		return results;
 	}
 
+	/**
+	 * Fetches messages between the sender and receiver with pagination
+	 * If pageNum is greater than the last page returns results in the last page.
+	 * If messagesPerPage = 0, then sets messagesPerPage to total size of the results
+	 * pageStart - (sets first result to retrieve) = (pageNum - 1) * (messagesPerPage)
+	 * Ex- If user requests messages(total 30 messages) from page 2 with messagesPerPage as 10 
+	 * pageStart = 10. Starts from 10th message and returns up to 19th message
+	 * @param sender
+	 * @param receiver
+	 * @param messagesPerPage
+	 * @param pageNum
+	 * @param session
+	 * @return list of messages in the page requested
+	 */
 	public List<String> fetchMessages(String sender, String receiver, int messagesPerPage, int pageNum, Session session) {
 		String hql = "select content from Message where sender='" + sender + "'" + "and receiver='" + receiver + "'";
 		Query query = null;
@@ -105,6 +133,12 @@ public class MessageDAOImpl implements MessageDAO {
 		deleteMessage(message, session);
 		session.close();
 	}
+	
+	/**
+	 * Deletes the particular message between sender and receiver
+	 * @param message
+	 * @param session
+	 */
 
 	public void deleteMessage(Message message, Session session) {
 		String sender = message.getSender();

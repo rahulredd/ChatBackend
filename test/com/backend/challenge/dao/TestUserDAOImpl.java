@@ -5,7 +5,12 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
-
+/**
+ * Uses the SessionFactoryRule to setup a test db in-memory
+ * Tests the UserDAOImpl class methods
+ * @author Rahul
+ *
+ */
 public class TestUserDAOImpl {
 
 	@Rule

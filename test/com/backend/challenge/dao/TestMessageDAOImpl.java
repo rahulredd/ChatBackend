@@ -5,7 +5,12 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import com.backend.challenge.pojo.Message;
-
+/**
+ * Uses the SessionFactoryRule to create a in-memory test db
+ * Tests the methods in MessageDAOImpl class
+ * @author Rahul
+ *
+ */
 public class TestMessageDAOImpl {
 	
 	@Rule

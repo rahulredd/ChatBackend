@@ -9,7 +9,12 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import junit.framework.Assert;
-	
+/**
+ * Tests teh sendMessage API of the server
+ * Creates dummy test users in the db and deletes them after the test case
+ * @author Rahul
+ *
+ */
 public class TestBackendServerUser {
 	
 	private static final String username = "testBackendServerUser";

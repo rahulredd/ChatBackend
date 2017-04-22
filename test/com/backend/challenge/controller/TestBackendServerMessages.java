@@ -11,6 +11,12 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import junit.framework.Assert;
 
+/**
+ * Tests sendMessage and fetchMessages APIs of the server
+ * Creates dummy users in the db and cleans up after the test case
+ * @author Rahul
+ *
+ */
 public class TestBackendServerMessages {
 	private static final String BASE_URL = "http://localhost:8080/ASAPP/rest/backendController";
 	private static final String sender = "testSender";

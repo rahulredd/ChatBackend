@@ -18,7 +18,10 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * BackendClient which sends requests to the BackendServer.
+ * Reads the inputs from cfg.properties
+ */
 public class BackendClient {
 	public static final Logger LOG = LoggerFactory.getLogger(BackendClient.class);
 	private static Properties props;
@@ -46,7 +49,14 @@ public class BackendClient {
 		}
 		return props;
 	}
-
+  
+	/**
+	 * Sends a request to the server to create a user. 
+	 * The password is encrypted and the parameters are sent in the header
+	 * @param username
+	 * @param password
+	 * 
+	 */
 	public void createUser(String username, String password) {
 		String url = BASE_URL + "/" + CREATEUSER_URL;
 		String authString = username + ":" + password;
@@ -66,6 +76,14 @@ public class BackendClient {
 	public void fetchMessages(String sender, String receiver) {
 		fetchMessages(sender, receiver, MESSAGES_PER_PAGE, PAGE_NUM);
 	}
+	
+	/**
+	 * Fetches the messages between the sender and receiver with pagination
+	 * @param sender
+	 * @param receiver
+	 * @param messagesPerPage
+	 * @param pageNum
+	 */
 
 	public void fetchMessages(String sender, String receiver, int messagesPerPage, int pageNum) {
 		if (messagesPerPage < 0) {
@@ -86,7 +104,13 @@ public class BackendClient {
 			System.out.println(messages);
 		}
 	}
-
+	
+  /**
+   * Takes a sender, recipient, and message and saves that to the data store
+   * @param sender
+   * @param receiver
+   * @param content
+   */
 	public void sendMessage(String sender, String receiver, String content) {
 		String url = BASE_URL + "/" + SENDMESSAGE_URL;
 		Message message = new Message(sender, receiver, content);

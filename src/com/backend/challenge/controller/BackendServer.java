@@ -19,11 +19,23 @@ import com.backend.challenge.dao.UserDAOImpl;
 import com.backend.challenge.pojo.Message;
 import com.backend.challenge.utils.StringList;
 import com.backend.challenge.utils.Utils;
-
+/**
+ * A server that handles incoming requests
+ * @author Rahul
+ *
+ */
 @Path("/backendController")
 public class BackendServer {
 
 	public static final Logger LOG = LoggerFactory.getLogger(BackendServer.class);
+	
+	/**
+	 * Accepts the header param that contains username and encrypted password
+	 * Decodes the string and calls the UserDAOImpl class to save the user in db 
+	 *   
+	 * @param authString
+	 * @return String
+	 */
 	
 	@POST
 	@Path("/createUser")
@@ -42,6 +54,15 @@ public class BackendServer {
 		return decodedAuth;
 	}
 	
+	/**
+	 * Fetches messages from the db. Arguments are passed in the URL
+	 * @param sender
+	 * @param receiver
+	 * @param messagesPerPage
+	 * @param pageNum
+	 * @return List of messages
+	 */
+	
 	@GET
 	@Path("/fetchMessages/{sender}/{receiver}/{messagesPerPage}/{pageNum}")
 	@Consumes({MediaType.APPLICATION_XML})
@@ -52,6 +73,13 @@ public class BackendServer {
 		List<String> results = messageDAO.fetchMessages(sender, receiver, messagesPerPage, pageNum);
 		return new StringList(results);
 	}
+	
+	/**
+	 * Accepts the Message object. Processes the content of message as video or text or image
+	 * Calls the MessageDAO and stores the message in the db
+	 * @param message
+	 * @return Response
+	 */
 	
 	@POST
 	@Path("/sendMessage")

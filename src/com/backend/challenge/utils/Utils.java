@@ -8,7 +8,11 @@ import java.util.regex.Pattern;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-
+/**
+ * 
+ * @author Rahul
+ *
+ */
 
 public class Utils {
 	/*
@@ -37,7 +41,14 @@ public class Utils {
 		}
 		return false;
 	}
-
+   
+	/**
+	 * Based on the content of the message, opens the URL and retrieves the type of URL
+	 * 
+	 * @param content
+	 * @return type of the content of message - image or text or video
+	 * @throws IOException
+	 */
 	private static CONTENT_TYPE getContentType(String content) throws IOException {
 		URL url = new URL(content);
 		URLConnection u = url.openConnection();
@@ -50,6 +61,12 @@ public class Utils {
 		return CONTENT_TYPE.TEXT;
 	}
 
+	/**
+	 * If message content of type image or video appends hard coded metadata
+	 * @param content
+	 * @param contentType
+	 * @return content 
+	 */
 	private static String appendMetadata(String content, String contentType) {
 		if (contentType.equals(CONTENT_TYPE.IMAGE.toString())) {
 			content += IMAGE_METADATA;
@@ -59,6 +76,13 @@ public class Utils {
 		return content;
 	}
 
+	/**
+	 * Process content of message.
+	 * Checks if it has URL. Retrieves the content type and appends metadata
+	 * @param content
+	 * @return content
+	 * @throws IOException
+	 */
 	public static String processContent(String content) throws IOException {
 		if (hasUrl(content)) {
 			CONTENT_TYPE contentType = getContentType(content);
@@ -69,6 +93,11 @@ public class Utils {
 		return content;
 	}
 
+	/**
+	 * Encrypts the password
+	 * @param password
+	 * @return encrypted password 
+	 */
 	public static String encrypt(String password) {
 		return BCrypt.hashpw(password, BCrypt.gensalt());
 	}
