@@ -34,6 +34,9 @@ public class TestBackendServerUser {
 		Client restClient = Client.create();
 		WebResource webResource = restClient.resource(url);
 		ClientResponse resp = webResource.accept("text/plain").header("Authorization", "Basic " + authStringEnc).post(ClientResponse.class);
+		if (resp.getStatus() != 200) {
+			Assert.fail("Unable to add user");
+		}
 		Assert.assertTrue(userDAOImpl.getUsers().contains(username));
 	}
 }

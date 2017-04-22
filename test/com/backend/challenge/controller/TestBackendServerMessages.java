@@ -1,17 +1,14 @@
 package com.backend.challenge.controller;
 
-import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import com.backend.challenge.dao.MessageDAOImpl;
 import com.backend.challenge.dao.UserDAOImpl;
 import com.backend.challenge.pojo.Message;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-
 import junit.framework.Assert;
 
 public class TestBackendServerMessages {

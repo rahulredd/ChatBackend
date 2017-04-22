@@ -7,6 +7,7 @@ import org.junit.Test;
 import com.backend.challenge.pojo.Message;
 
 public class TestMessageDAOImpl {
+	
 	@Rule
 	public final SessionFactoryRule sessionFactoryRule = new SessionFactoryRule();
 

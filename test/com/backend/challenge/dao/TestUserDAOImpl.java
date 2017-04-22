@@ -5,7 +5,6 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
-import com.backend.challenge.pojo.User;
 
 public class TestUserDAOImpl {
 
@@ -15,7 +14,7 @@ public class TestUserDAOImpl {
 	private static final String username = "testcases";
 	private static final String password = "test123";
 	
-	//@Test
+	@Test
 	public void testAddUser() {
 		Session session = sessionFactoryRule.getSession();
 		UserDAOImpl userDAOImpl = new UserDAOImpl();

@@ -1,7 +1,6 @@
 package com.backend.challenge.dao;
 
 import java.util.List;
-
 import com.backend.challenge.pojo.Message;
 
 public interface MessageDAO {

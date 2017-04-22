@@ -2,14 +2,11 @@ package com.backend.challenge.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.exception.SQLGrammarException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.backend.challenge.pojo.Message;
 import com.backend.challenge.utils.DbUtils;
 

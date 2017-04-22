@@ -2,7 +2,6 @@ package com.backend.challenge.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -24,10 +23,6 @@ public class UserDAOImpl implements UserDAO {
 
 	public UserDAOImpl() {
 
-	}
-
-	public UserDAOImpl(Session session) {
-		this.session = session;
 	}
 
 	@Override
